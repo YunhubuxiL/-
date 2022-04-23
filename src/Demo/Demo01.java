@@ -2,18 +2,41 @@ package Demo;
 
 import HashMapDemo.HashMapDemo;
 
-import java.util.HashMap;
-import java.util.UUID;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Demo01 {
-    public static void main(String[] args) {
-        HashMapDemo<String,Integer> map = new HashMapDemo<String, Integer>();
-        for(int i =0;i<10;i++){
-            map.put(UUID.randomUUID().toString(),i);
+    String str = "a";
+    void A(){
+        try {
+            str+="b";
+            B();
+        }catch (Exception e){
+            str +="c";
         }
-        map.put(null,2);
-        System.out.println(map.get(null));
-        System.out.println(map);
-
     }
+    void B()throws Exception {
+        try {
+            str+="d";
+            C();
+        }catch (Exception e){
+            throw  new Exception();
+        }finally {
+            str+="e";
+        }
+        str +="f";
+    }
+    void C() throws Exception{
+        throw new Exception();
+    }
+    void display(){
+        System.out.println(str);
+    }
+
+    public static void main(String[] args) {
+        int a = 21;
+        int b = -1;
+        System.out.println(a&b);
+    }
+
 }
